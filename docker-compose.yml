@@ -4,14 +4,14 @@ mongodb:
   image: mongo:latest
   container_name: mongodb
   ports:
-    -"27017:27017"
+    - "27017:27017"
   volumes:
     - mongo-data:/data/db
 backend:
   build: ./backend
   container_name: backend
   ports:
-    -"5001:5001"
+    - "5001:5001"
   environment:
     - PORT=5001
     - MONGO_URI=mongodb://mongodb:27017/mern-app
@@ -23,6 +23,6 @@ frontend:
   ports:
     - "5173:5173"
   depends_on:
-      - backend
-  volumes:
-    mongo-data:
+    - backend
+volumes:
+  mongo-data:
